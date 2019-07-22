@@ -12,9 +12,12 @@ class Backer
   end
 
   def back_project(project)
-    @@backed_projects << project
-    project.add_backer(self)
+    if @@backed_projects.find { |i| i.title == project.title }
+    else
+      @@backed_projects << project
+      project.add_backer(self)
+    end
   end
 
-@@backed_projects.find { |i| i.title == title }
+
 end
